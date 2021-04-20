@@ -48,11 +48,27 @@
                     <td>
                         <a class="btn btn-outline-secondary" href="editStudent?id=${student.getId()}">Edit</a>
                         <a class="studentDeleteBtn btn btn-outline-secondary" href="deleteStudent?id=${student.getId()}">Delete</a>
-<%--                        <span class="d-none">${student.getId()}</span>--%>
                     </td>
                 </tr>
             </c:forEach>
+            <script>
+                $( document ).ready(function() {
 
+                    $(".studentDeleteBtn").click(function(event) {
+                        var ans = window.confirm("DELETE?");
+                        if (!ans) {
+                            // var href = $(this).attr('href');
+                            // console.log(href);
+                            return false;
+                        }
+                        var href = $(this).attr('href');
+                        // alert(href);
+                        event.preventDefault();
+                        location.href = href;
+                    });
+
+                });
+            </script>
 <%--            <script>--%>
 <%--                $( document ).ready(function() {--%>
 <%--                    var id = $(.stude)--%>

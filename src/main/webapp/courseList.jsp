@@ -33,12 +33,29 @@
                 <td>${course.getName()}</td>
                 <td>
                     <a class="btn btn-outline-secondary" href="editCourse?id=${course.getId()}">Edit</a>
-                    <a class="studentDeleteBtn btn btn-outline-secondary" href="deleteCourse?id=${course.getId()}">Delete</a>
+                    <a class="courseDeleteBtn btn btn-outline-secondary" href="deleteCourse?id=${course.getId()}">Delete</a>
                 </td>
             </tr>
         </c:forEach>
         </tbody>
+        <script>
+            $( document ).ready(function() {
 
+                $(".courseDeleteBtn").click(function(event) {
+                    var ans = window.confirm("DELETE?");
+                    if (!ans) {
+                        // var href = $(this).attr('href');
+                        // console.log(href);
+                        return false;
+                    }
+                    var href = $(this).attr('href');
+                    // alert(href);
+                    event.preventDefault();
+                    location.href = href;
+                });
+
+            });
+        </script>
     </table>
 </div>
 </body>
